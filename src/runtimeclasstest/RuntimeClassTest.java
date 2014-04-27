@@ -24,8 +24,19 @@ public class RuntimeClassTest {
         InputStream stdout = null;
 
         // launch EXE and grab stdin/stdout and stderr
-        Process process2 = Runtime.getRuntime().exec("javac /Users/Adix/Desktop/Test.java");
-        Process process = Runtime.getRuntime().exec("java /Users/Adix/Desktop/Test");
+        String[] cmd1 = {"javac",  
+                 "/Users/Adix/Desktop/Test.java"};
+        
+        Process process2 = Runtime.getRuntime().exec(cmd1);
+        
+        
+        String[] cmd = {"java", 
+                 "-cp",
+                 "/Users/Adix/Desktop/",
+                 "Test"};
+                
+        Process process = Runtime.getRuntime().exec(cmd);
+        
         stdin = process.getOutputStream();
         stderr = process.getErrorStream();
         stdout = process.getInputStream();
